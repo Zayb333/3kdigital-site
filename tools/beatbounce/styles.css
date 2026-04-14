@@ -1,0 +1,97 @@
+/* styles.css */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.app-container {
+    width: 100%;
+    max-width: 600px;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+}
+
+.input-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+input {
+    width: 70%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    outline: none;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #36d7b7;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    opacity: 0.33;
+    transition: opacity 0.3s ease;
+}
+
+button:hover {
+    opacity: 1;
+}
+
+.hidden {
+    display: none;
+}
+
+.loading-spinner {
+    font-size: 1.5rem;
+}
+
+#audio-details {
+    margin-top: 20px;
+}
+
+#audio-title {
+    font-size: 1.5rem;
+    color: #333;
+}
+
+#audio-bpm, #audio-key {
+    font-size: 1rem;
+    color: #666;
+}
+
+audio {
+    margin-top: 20px;
+    width: 100%;
+}
+
+#download-btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #36d7b7;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#download-btn:hover {
+    opacity: 0.8;
+}

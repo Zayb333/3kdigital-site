@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BeatBounce</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <a href="../../index.html">
+            <img src="../../assets/logos/3k-digital-logo.png" alt="3K Digital"
+                 style="width:90%;">
+        </a>
+        <h1>BeatBounce</h1>
+        <div class="input-container">
+            <input type="text" id="url" placeholder="Paste YouTube URL" />
+            <button id="submit-btn">Extract Audio</button>
+        </div>
+
+        <div id="loading" class="hidden">
+            <div class="loading-spinner">⏳ Processing...</div>
+        </div>
+
+        <div id="audio-details" class="hidden">
+            <h2 id="audio-title"></h2>
+            <p id="audio-bpm">BPM: --</p>
+            <p id="audio-key">Key: --</p>
+
+            <audio id="audio-player" controls></audio>
+            <button id="download-btn">Download MP3</button>
+        </div>
+    </div>
+
+<script src="script.js"></script>
+</body>
+</html>

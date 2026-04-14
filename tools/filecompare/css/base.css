@@ -1,0 +1,106 @@
+/* ─────────────────────────────────────────────────────────────────────────────
+   base.css — CSS custom properties, reset, typography, shared utilities
+   FileCompare · 3K Digital
+───────────────────────────────────────────────────────────────────────────── */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  /* Backgrounds */
+  --bg:  #0a0a0a;
+  --bg2: #111111;
+  --bg3: #161616;
+  --bg4: #1c1c1c;
+
+  /* Borders */
+  --border:  #1e1e1e;
+  --border2: #2a2a2a;
+  --border3: #383838;
+
+  /* Text */
+  --text:  #f0f0f0;
+  --text2: #aaaaaa;
+  --text3: #555555;
+
+  /* Diff colours */
+  --green-bg:     rgba(74, 222, 128, 0.07);
+  --green-text:   #4ade80;
+  --green-border: rgba(74, 222, 128, 0.2);
+
+  --red-bg:     rgba(248, 113, 113, 0.07);
+  --red-text:   #f87171;
+  --red-border: rgba(248, 113, 113, 0.2);
+
+  --yellow-bg:     rgba(251, 191, 36, 0.07);
+  --yellow-text:   #fbbf24;
+  --yellow-border: rgba(251, 191, 36, 0.2);
+
+  /* Radii */
+  --radius:    8px;
+  --radius-lg: 12px;
+
+  /* Fonts */
+  --font: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  --mono: 'SF Mono', 'Fira Code', 'Cascadia Code', 'JetBrains Mono', monospace;
+}
+
+html, body {
+  height: 100%;
+  min-height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+}
+
+/* Scrollbars */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border2) transparent;
+}
+::-webkit-scrollbar       { width: 5px; height: 5px; }
+::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--border3); }
+
+/* ── Shared section layout ─────────────────────────────────────────────────── */
+.section {
+  padding: 72px 48px;
+  max-width: 1100px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.sec-eyebrow {
+  font-size: 11px;
+  color: var(--text3);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 14px;
+}
+
+.sec-title {
+  font-size: clamp(26px, 3vw, 38px);
+  font-weight: 600;
+  letter-spacing: -1px;
+  margin-bottom: 44px;
+  line-height: 1.15;
+}
+
+.section-divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 0;
+}
+
+/* ── Responsive ────────────────────────────────────────────────────────────── */
+@media (max-width: 700px) {
+  .section {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}

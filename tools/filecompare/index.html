@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FileCompare — 3K Digital</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/landing.css">
+  <link rel="stylesheet" href="css/app.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js" defer></script>
+</head>
+<body>
+
+  <!-- ═══════════════════════════ LANDING PAGE ══════════════════════════════ -->
+  <div id="landing">
+    <nav class="nav">
+        <div class="logo">
+            <div class="logo-mark">
+                <svg viewBox="0 0 16 16" fill="none" stroke="#000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="1" y="3" width="6" height="10" rx="1" />
+                    <rect x="9" y="3" width="6" height="10" rx="1" />
+                    <line x1="8" y1="6" x2="8" y2="10" />
+                </svg>
+            </div>
+            <div class="logo-text">
+                <div class="logo-name">FileCompare</div>
+                <div class="logo-by">
+                    <a href="../../index.html">
+                        <img src="../../assets/logos/3k-digital-logo.png" alt="3K Digital"
+                             style="height:1.5rem;
+                                    width:auto;">
+                    </a>
+                </div>
+            </div>
+
+        </div>
+      <div class="nav-right">
+        <button class="btn-ghost" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Contact</button>
+        <button class="btn-solid" onclick="launchApp()">Open App →</button>
+      </div>
+    </nav>
+
+    <section class="hero">
+      <div class="hero-pill">
+        <span class="pill-dot"></span>
+        Now in beta &mdash; free to use
+      </div>
+      <h1>Compare files instantly.<br><span>See every difference.</span></h1>
+      <p class="hero-desc">Text, PDFs, spreadsheets, code, and more &mdash; fast, visual, and precise.</p>
+      <div class="hero-ctas">
+        <button class="cta-primary" onclick="launchApp()">Try it now &rarr;</button>
+        <button class="cta-secondary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Book a demo</button>
+      </div>
+    </section>
+
+    <!-- Product preview mockup -->
+    <div class="preview-wrap">
+      <p class="preview-eyebrow">Product preview</p>
+      <div class="preview-shell">
+        <div class="preview-bar">
+          <span class="dot dot-r"></span>
+          <span class="dot dot-y"></span>
+          <span class="dot dot-g"></span>
+          <span class="preview-bar-label">filecompare — diff viewer</span>
+        </div>
+        <div class="preview-cols">
+          <div class="prev-col">
+            <div class="prev-col-name">config_production.json</div>
+            <div class="pl"><span class="pl-n">1</span><span>{</span></div>
+            <div class="pl"><span class="pl-n">2</span><span>&nbsp;&nbsp;"version": "1.0.0",</span></div>
+            <div class="pl del"><span class="pl-n">3</span><span>&nbsp;&nbsp;"timeout": 3000,</span></div>
+            <div class="pl"><span class="pl-n">4</span><span>&nbsp;&nbsp;"retries": 3,</span></div>
+            <div class="pl chg"><span class="pl-n">5</span><span>&nbsp;&nbsp;"endpoint": "api.legacy.io",</span></div>
+            <div class="pl del"><span class="pl-n">6</span><span>&nbsp;&nbsp;"debug": true</span></div>
+            <div class="pl"><span class="pl-n">7</span><span>}</span></div>
+          </div>
+          <div class="prev-col">
+            <div class="prev-col-name">config_staging.json</div>
+            <div class="pl"><span class="pl-n">1</span><span>{</span></div>
+            <div class="pl"><span class="pl-n">2</span><span>&nbsp;&nbsp;"version": "1.0.0",</span></div>
+            <div class="pl add"><span class="pl-n">3</span><span>&nbsp;&nbsp;"timeout": 5000,</span></div>
+            <div class="pl"><span class="pl-n">4</span><span>&nbsp;&nbsp;"retries": 3,</span></div>
+            <div class="pl chg"><span class="pl-n">5</span><span>&nbsp;&nbsp;"endpoint": "api.new.io",</span></div>
+            <div class="pl add"><span class="pl-n">6</span><span>&nbsp;&nbsp;"verbose": false,</span></div>
+            <div class="pl"><span class="pl-n">7</span><span>}</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="section-divider">
+
+    <!-- Value propositions -->
+    <section class="section">
+      <div class="sec-eyebrow">Why FileCompare</div>
+      <h2 class="sec-title">Built for precision. Designed for speed.</h2>
+      <div class="props-grid">
+        <div class="prop">
+          <div class="prop-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+          </div>
+          <h3>Catch errors before they cost you</h3>
+          <p>Spot accidental changes, missing lines, or config drift before they reach production — or a client.</p>
+        </div>
+        <div class="prop">
+          <div class="prop-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+            </svg>
+          </div>
+          <h3>Compare complex files in seconds</h3>
+          <p>From JSON configs to multi-page PDFs — our engine handles structured and free-form content with equal clarity.</p>
+        </div>
+        <div class="prop">
+          <div class="prop-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+            </svg>
+          </div>
+          <h3>Built for real workflows</h3>
+          <p>Side-by-side panels, sync scrolling, and character-level diff highlighting make review sessions fast and painless.</p>
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- Use cases -->
+    <section class="section" style="padding-top: 48px">
+      <div class="sec-eyebrow">Use Cases</div>
+      <h2 class="sec-title">Made for every team.</h2>
+      <div class="cases">
+        <div class="case">
+          <div class="case-tag">Engineering</div>
+          <h3>Config &amp; code review</h3>
+          <p>Compare environment configs, JSON schemas, YAML files, or source code side by side. Catch regressions the moment they appear.</p>
+        </div>
+        <div class="case">
+          <div class="case-tag">Finance &amp; Ops</div>
+          <h3>Excel &amp; CSV audits</h3>
+          <p>Track changes in spreadsheet exports, data pipelines, and reports with structured, line-aware comparison.</p>
+        </div>
+        <div class="case">
+          <div class="case-tag">Legal &amp; Compliance</div>
+          <h3>Document comparison</h3>
+          <p>Review contract revisions, policy updates, and regulatory filings with clear, unambiguous highlighting.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact / Early access -->
+    <section class="cta-section" id="contact">
+      <div class="cta-inner">
+        <h2>Get early access</h2>
+        <p>Join teams already using FileCompare to ship with confidence. We'll reach out within 24 hours.</p>
+        <form onsubmit="handleFormSubmit(event)">
+          <div class="fg">
+            <input class="fi" placeholder="Name" required>
+            <input class="fi" type="email" placeholder="Work email" required>
+            <input class="fi" placeholder="Company">
+            <select class="fi">
+              <option value="">Use case</option>
+              <option>Engineering / DevOps</option>
+              <option>Legal / Compliance</option>
+              <option>Finance / Auditing</option>
+              <option>Product / Design</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <button class="fsub" type="submit">Request access</button>
+          <div class="success-msg" id="form-success">✓ You're on the list — we'll be in touch within 24 hours.</div>
+        </form>
+      </div>
+    </section>
+
+    <footer>
+      <span class="footer-brand">Powered by 3K Digital</span>
+      <div class="footer-links">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Security</a>
+      </div>
+    </footer>
+  </div><!-- /#landing -->
+
+
+  <!-- ═══════════════════════════ APP ═══════════════════════════════════════ -->
+  <div id="app">
+    <div class="app-bar">
+      <div class="app-bar-left">
+        <button class="back-btn" onclick="backToLanding()">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="15 18 9 12 15 6"/>
+          </svg>
+          Back
+        </button>
+        <div class="app-name">
+          <svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="1" y="3" width="6" height="10" rx="1"/>
+            <rect x="9" y="3" width="6" height="10" rx="1"/>
+            <line x1="8" y1="6" x2="8" y2="10"/>
+          </svg>
+          FileCompare
+        </div>
+      </div>
+      <div class="app-controls" id="app-controls" style="display: none">
+        <button class="ctrl on" id="sync-btn" onclick="toggleSync()">Sync scroll ✓</button>
+        <div class="vsep"></div>
+        <button class="ctrl on" id="side-btn" onclick="setView('side')">Side by side</button>
+        <button class="ctrl" id="inline-btn" onclick="setView('inline')">Inline</button>
+        <div class="vsep"></div>
+        <button class="ctrl" onclick="resetCompare()">New compare</button>
+      </div>
+    </div>
+
+    <!-- Upload view -->
+    <div id="upload-view">
+      <div class="up-pane">
+        <div class="up-label">Left File</div>
+        <div class="drop-zone" id="dz-left"
+          ondragover="dzDrag(event,'left',true)"
+          ondragleave="dzDrag(event,'left',false)"
+          ondrop="dzDrop(event,'left')">
+          <input type="file"
+            accept=".txt,.json,.xml,.csv,.html,.css,.js,.ts,.jsx,.tsx,.py,.cs,.java,.md,.yaml,.yml,.pdf,.log,.sh,.sql,.toml,.ini,.cfg,.conf"
+            onchange="fileChosen(event,'left')">
+          <div class="dz-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+              <polyline points="17 8 12 3 7 8"/>
+              <line x1="12" y1="3" x2="12" y2="15"/>
+            </svg>
+          </div>
+          <div class="dz-title">Drop file or click to browse</div>
+          <div class="dz-hint">Supports drag &amp; drop</div>
+          <div class="dz-types">TXT &middot; JSON &middot; CSV &middot; PDF &middot; JS &middot; XML &middot; YAML &middot; HTML &middot; and more</div>
+        </div>
+        <div id="chip-left" style="display: none" class="file-chip">
+          <div class="chip-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+            </svg>
+          </div>
+          <div class="chip-info">
+            <div class="chip-name" id="chip-left-name"></div>
+            <div class="chip-size" id="chip-left-size"></div>
+          </div>
+          <button class="chip-rm" onclick="clearFile('left')" title="Remove">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18"/>
+              <line x1="6" y1="6" x2="18" y2="18"/>
+            </svg>
+          </button>
+        </div>
+        <div id="err-left" class="err-box" style="display: none"></div>
+      </div>
+
+      <div class="up-pane">
+        <div class="up-label">Right File</div>
+        <div class="drop-zone" id="dz-right"
+          ondragover="dzDrag(event,'right',true)"
+          ondragleave="dzDrag(event,'right',false)"
+          ondrop="dzDrop(event,'right')">
+          <input type="file"
+            accept=".txt,.json,.xml,.csv,.html,.css,.js,.ts,.jsx,.tsx,.py,.cs,.java,.md,.yaml,.yml,.pdf,.log,.sh,.sql,.toml,.ini,.cfg,.conf"
+            onchange="fileChosen(event,'right')">
+          <div class="dz-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+              <polyline points="17 8 12 3 7 8"/>
+              <line x1="12" y1="3" x2="12" y2="15"/>
+            </svg>
+          </div>
+          <div class="dz-title">Drop file or click to browse</div>
+          <div class="dz-hint">Supports drag &amp; drop</div>
+          <div class="dz-types">TXT &middot; JSON &middot; CSV &middot; PDF &middot; JS &middot; XML &middot; YAML &middot; HTML &middot; and more</div>
+        </div>
+        <div id="chip-right" style="display: none" class="file-chip">
+          <div class="chip-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+            </svg>
+          </div>
+          <div class="chip-info">
+            <div class="chip-name" id="chip-right-name"></div>
+            <div class="chip-size" id="chip-right-size"></div>
+          </div>
+          <button class="chip-rm" onclick="clearFile('right')" title="Remove">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18"/>
+              <line x1="6" y1="6" x2="18" y2="18"/>
+            </svg>
+          </button>
+        </div>
+        <div id="err-right" class="err-box" style="display: none"></div>
+      </div>
+    </div><!-- /#upload-view -->
+
+    <!-- Compare view -->
+    <div id="compare-view">
+      <div class="panels" id="panels-wrap">
+        <div class="panel" id="panel-left">
+          <div class="panel-head">
+            <span class="panel-fn" id="ph-left-name">—</span>
+            <span class="panel-stat pstat-d" id="ph-left-stat"></span>
+          </div>
+          <div class="panel-body" id="body-left" onscroll="onScroll('left')"></div>
+        </div>
+        <div class="resizer" id="resizer" onmousedown="startResize(event)"></div>
+        <div class="panel" id="panel-right">
+          <div class="panel-head">
+            <span class="panel-fn" id="ph-right-name">—</span>
+            <span class="panel-stat pstat-a" id="ph-right-stat"></span>
+          </div>
+          <div class="panel-body" id="body-right" onscroll="onScroll('right')"></div>
+        </div>
+      </div>
+      <div class="status-bar" id="status-bar">
+        <span>
+          <span class="sb-dot" style="background: rgba(74,222,128,0.5)"></span>
+          <span style="color: var(--green-text)" id="sb-adds">+0</span> added
+        </span>
+        <span>
+          <span class="sb-dot" style="background: rgba(248,113,113,0.5)"></span>
+          <span style="color: var(--red-text)" id="sb-dels">-0</span> removed
+        </span>
+        <span>
+          <span class="sb-dot" style="background: rgba(251,191,36,0.5)"></span>
+          <span style="color: var(--yellow-text)" id="sb-chgs">~0</span> changed
+        </span>
+        <span style="margin-left: auto; color: var(--text3)" id="sb-lines"></span>
+      </div>
+    </div><!-- /#compare-view -->
+
+  </div><!-- /#app -->
+
+  <script src="js/diff.js"></script>
+  <script src="js/pdf.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
