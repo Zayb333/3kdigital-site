@@ -1,0 +1,223 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Text Cleaner by 3K Digital — instantly remove extra spaces, fix capitalization, normalize line breaks, and clean messy text in seconds. Free online text formatting tool." />
+  <meta property="og:title" content="Text Cleaner — 3K Digital" />
+  <meta property="og:description" content="Clean up messy text in seconds. Remove spaces, fix capitalization, strip special characters and more." />
+  <meta property="og:type" content="website" />
+  <title>Text Cleaner — 3K Digital</title>
+  <link rel="stylesheet" href="styles.css" />
+  <!-- Distinctive display font: DM Mono for monospace precision + Fraunces for editorial warmth -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;1,9..144,300&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- Background noise texture overlay -->
+  <div class="bg-noise" aria-hidden="true"></div>
+
+  <!-- Grid lines decoration -->
+  <div class="bg-grid" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <a href="../../index.html" class="back-link" aria-label="Back to 3k Digital homepage">
+      <span class="back-arrow">←</span>
+      <img src="../../assets/logos/3k-digital-logo.png" alt="3k Digital"
+           style="width:9rem;">
+    </a>
+    <div class="brand-badge">BETA</div>
+  </header>
+
+  <main class="main-wrapper">
+
+    <!-- ── Hero Title ───────────────────────────────────── -->
+    <section class="hero" aria-labelledby="tool-title">
+      <div class="hero-eyebrow">
+        <span class="dot"></span>
+        <span>Text Utility · v1.0</span>
+      </div>
+      <h1 id="tool-title" class="hero-title">
+        Text<em>Cleanr</em>
+      </h1>
+      <p class="hero-sub">Clean up messy text in seconds</p>
+    </section>
+
+    <!-- ── Tool Interface ────────────────────────────────── -->
+    <section class="tool-card" aria-label="Text cleaning tool">
+
+      <!-- Input Area -->
+      <div class="panel panel--input">
+        <div class="panel-header">
+          <label for="input-text" class="panel-label">INPUT</label>
+          <span class="char-count" id="input-count">0 chars</span>
+        </div>
+        <textarea
+          id="input-text"
+          class="text-area"
+          placeholder="Paste your text here..."
+          spellcheck="false"
+          aria-describedby="input-count"
+        ></textarea>
+      </div>
+
+      <!-- Controls Section -->
+      <div class="controls-section" role="group" aria-labelledby="controls-heading">
+        <h2 id="controls-heading" class="controls-heading">CLEANING OPTIONS</h2>
+
+        <div class="controls-grid">
+
+          <label class="toggle-item" for="opt-spaces">
+            <input type="checkbox" id="opt-spaces" class="toggle-input" checked />
+            <span class="toggle-track" aria-hidden="true">
+              <span class="toggle-thumb"></span>
+            </span>
+            <span class="toggle-label">
+              <span class="toggle-name">Remove extra spaces</span>
+              <span class="toggle-desc">Collapse multiple spaces into one</span>
+            </span>
+          </label>
+
+          <label class="toggle-item" for="opt-sentence-case">
+            <input type="checkbox" id="opt-sentence-case" class="toggle-input" />
+            <span class="toggle-track" aria-hidden="true">
+              <span class="toggle-thumb"></span>
+            </span>
+            <span class="toggle-label">
+              <span class="toggle-name">Fix capitalization</span>
+              <span class="toggle-desc">Convert text to sentence case</span>
+            </span>
+          </label>
+
+          <label class="toggle-item" for="opt-uppercase">
+            <input type="checkbox" id="opt-uppercase" class="toggle-input" />
+            <span class="toggle-track" aria-hidden="true">
+              <span class="toggle-thumb"></span>
+            </span>
+            <span class="toggle-label">
+              <span class="toggle-name">Convert to UPPERCASE</span>
+              <span class="toggle-desc">Force all characters uppercase</span>
+            </span>
+          </label>
+
+          <label class="toggle-item" for="opt-lowercase">
+            <input type="checkbox" id="opt-lowercase" class="toggle-input" />
+            <span class="toggle-track" aria-hidden="true">
+              <span class="toggle-thumb"></span>
+            </span>
+            <span class="toggle-label">
+              <span class="toggle-name">Convert to lowercase</span>
+              <span class="toggle-desc">Force all characters lowercase</span>
+            </span>
+          </label>
+
+          <label class="toggle-item" for="opt-linebreaks">
+            <input type="checkbox" id="opt-linebreaks" class="toggle-input" checked />
+            <span class="toggle-track" aria-hidden="true">
+              <span class="toggle-thumb"></span>
+            </span>
+            <span class="toggle-label">
+              <span class="toggle-name">Normalize line breaks</span>
+              <span class="toggle-desc">Remove excessive empty lines</span>
+            </span>
+          </label>
+
+          <label class="toggle-item" for="opt-special">
+            <input type="checkbox" id="opt-special" class="toggle-input" />
+            <span class="toggle-track" aria-hidden="true">
+              <span class="toggle-thumb"></span>
+            </span>
+            <span class="toggle-label">
+              <span class="toggle-name">Remove special characters</span>
+              <span class="toggle-desc">Strip non-alphanumeric (keeps basic punctuation)</span>
+            </span>
+          </label>
+
+        </div>
+
+        <!-- Action Button -->
+        <button id="clean-btn" class="clean-btn" aria-label="Clean the input text">
+          <span class="btn-text">Clean Text</span>
+          <span class="btn-spinner" aria-hidden="true"></span>
+          <span class="btn-glow" aria-hidden="true"></span>
+        </button>
+
+      </div>
+
+      <!-- Output Area -->
+      <div class="panel panel--output">
+        <div class="panel-header">
+          <label for="output-text" class="panel-label">OUTPUT</label>
+          <div class="output-actions">
+            <span class="char-count" id="output-count">0 chars</span>
+            <button id="copy-btn" class="copy-btn" aria-label="Copy output text to clipboard" disabled>
+              <span class="copy-icon" aria-hidden="true">⎘</span>
+              <span class="copy-text">Copy</span>
+            </button>
+          </div>
+        </div>
+        <textarea
+          id="output-text"
+          class="text-area text-area--output"
+          readonly
+          placeholder="Cleaned text will appear here..."
+          aria-live="polite"
+          aria-label="Cleaned text output"
+        ></textarea>
+      </div>
+
+    </section>
+
+    <!-- ── SEO Content Section ───────────────────────────── -->
+    <section class="info-section" aria-labelledby="about-heading">
+      <div class="info-grid">
+
+        <article class="info-card">
+          <h2 id="about-heading" class="info-card__title">What is Text Cleaner?</h2>
+          <p class="info-card__body">
+            Text Cleaner is a lightweight, browser-based formatting utility built by
+            <strong>3K Digital</strong> to help you instantly tidy up raw or messy text.
+            No data leaves your browser — everything is processed locally in real time.
+            Paste, configure, clean. That's it.
+          </p>
+        </article>
+
+        <article class="info-card">
+          <h2 class="info-card__title">Common Use Cases</h2>
+          <ul class="info-card__list">
+            <li>Cleaning copy-pasted text from PDFs or web pages</li>
+            <li>Standardizing email drafts before sending</li>
+            <li>Preparing documents for publishing or submission</li>
+            <li>Normalizing user-submitted data in prototypes</li>
+            <li>Removing unwanted formatting from meeting notes</li>
+          </ul>
+        </article>
+
+        <article class="info-card">
+          <h2 class="info-card__title">How It Works</h2>
+          <p class="info-card__body">
+            Select the cleaning operations you need using the toggles above, paste your
+            text into the input field, and hit <strong>Clean Text</strong>. Transformations
+            are applied in sequence — so you can combine multiple options freely.
+            Use the <strong>Copy</strong> button to send the result straight to your clipboard.
+          </p>
+        </article>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <span>© 2025 <a href="../../index.html" class="footer-link">
+    <img src="../../assets/logos/3k-digital-logo.png" alt="3k Digital"
+         style="width:3rem;">
+    </a>. All rights reserved.</span>
+    <span class="footer-tag">Built with precision.</span>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

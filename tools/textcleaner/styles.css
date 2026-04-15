@@ -1,0 +1,762 @@
+/* ==========================================================================
+   Text Cleanr — 3K Digital
+   styles.css
+   Design direction: Dark luxury editorial — deep charcoal, acid-green accent,
+   DM Mono precision meets Fraunces editorial warmth.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. CSS Custom Properties
+   -------------------------------------------------------------------------- */
+:root {
+  /* Color Palette */
+  --clr-bg:           #0e0f11;
+  --clr-surface:      #141618;
+  --clr-surface-2:    #1c1e21;
+  --clr-surface-3:    #232629;
+  --clr-border:       rgba(255, 255, 255, 0.07);
+  --clr-border-hover: rgba(255, 255, 255, 0.14);
+
+  --clr-accent:       #a8ff47;   /* acid green */
+  --clr-accent-dim:   rgba(168, 255, 71, 0.12);
+  --clr-accent-glow:  rgba(168, 255, 71, 0.35);
+
+  --clr-text-primary:   #e8e9eb;
+  --clr-text-secondary: #7a7d84;
+  --clr-text-muted:     #4a4d54;
+
+  /* Typography */
+  --font-mono:    'DM Mono', 'Courier New', monospace;
+  --font-display: 'Fraunces', Georgia, serif;
+
+  /* Spacing */
+  --space-xs:  4px;
+  --space-sm:  8px;
+  --space-md:  16px;
+  --space-lg:  24px;
+  --space-xl:  40px;
+  --space-2xl: 64px;
+  --space-3xl: 96px;
+
+  /* Radii */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+
+  /* Shadows */
+  --shadow-card: 0 0 0 1px var(--clr-border), 0 24px 48px rgba(0, 0, 0, 0.6);
+  --shadow-btn:  0 4px 20px rgba(168, 255, 71, 0.25);
+
+  /* Transitions */
+  --ease-smooth: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --dur-fast:    150ms;
+  --dur-med:     280ms;
+  --dur-slow:    450ms;
+}
+
+/* --------------------------------------------------------------------------
+   2. Reset & Base
+   -------------------------------------------------------------------------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: var(--clr-bg);
+  color: var(--clr-text-primary);
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  line-height: 1.6;
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Focused accessibility */
+:focus-visible {
+  outline: 2px solid var(--clr-accent);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+a {
+  color: var(--clr-accent);
+  text-decoration: none;
+  transition: opacity var(--dur-fast) var(--ease-smooth);
+}
+a:hover { opacity: 0.75; }
+
+/* --------------------------------------------------------------------------
+   3. Background Decoration — Noise & Grid
+   -------------------------------------------------------------------------- */
+
+/* Subtle noise texture using SVG filter */
+.bg-noise {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+}
+
+/* Faint grid lines */
+.bg-grid {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(var(--clr-border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--clr-border) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 20%, black 30%, transparent 100%);
+}
+
+/* All content sits above decorations */
+body > *:not(.bg-noise):not(.bg-grid) {
+  position: relative;
+  z-index: 1;
+}
+
+/* --------------------------------------------------------------------------
+   4. Site Header
+   -------------------------------------------------------------------------- */
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-lg) var(--space-xl);
+  border-bottom: 1px solid var(--clr-border);
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  color: var(--clr-text-secondary);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: color var(--dur-fast) var(--ease-smooth);
+}
+.back-link:hover { color: var(--clr-text-primary); opacity: 1; }
+
+.back-arrow {
+  display: inline-block;
+  transition: transform var(--dur-fast) var(--ease-smooth);
+}
+.back-link:hover .back-arrow { transform: translateX(-4px); }
+
+.brand-badge {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  color: var(--clr-accent);
+  background: var(--clr-accent-dim);
+  border: 1px solid rgba(168, 255, 71, 0.25);
+  border-radius: 4px;
+  padding: 3px 8px;
+}
+
+/* --------------------------------------------------------------------------
+   5. Main Wrapper & Layout
+   -------------------------------------------------------------------------- */
+.main-wrapper {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: var(--space-2xl) var(--space-xl) var(--space-3xl);
+}
+
+/* --------------------------------------------------------------------------
+   6. Hero Section
+   -------------------------------------------------------------------------- */
+.hero {
+  text-align: center;
+  margin-bottom: var(--space-2xl);
+  animation: fadeUp var(--dur-slow) var(--ease-smooth) both;
+}
+
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-family: var(--font-mono);
+  font-size: 0.688rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--clr-text-muted);
+  margin-bottom: var(--space-lg);
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--clr-accent);
+  box-shadow: 0 0 8px var(--clr-accent-glow);
+  animation: pulse 2.5s ease-in-out infinite;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.8rem, 7vw, 5.5rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--clr-text-primary);
+  margin-bottom: var(--space-md);
+}
+
+.hero-title em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--clr-accent);
+}
+
+.hero-sub {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  color: var(--clr-text-secondary);
+  letter-spacing: 0.04em;
+}
+
+/* --------------------------------------------------------------------------
+   7. Tool Card
+   -------------------------------------------------------------------------- */
+.tool-card {
+  background: var(--clr-surface);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: auto auto auto;
+  animation: fadeUp var(--dur-slow) var(--ease-smooth) 100ms both;
+}
+
+/* --------------------------------------------------------------------------
+   8. Panels (Input / Output)
+   -------------------------------------------------------------------------- */
+.panel {
+  border-bottom: 1px solid var(--clr-border);
+}
+
+.panel--output {
+  border-bottom: none;
+}
+
+.panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-md) var(--space-lg);
+  border-bottom: 1px solid var(--clr-border);
+  background: var(--clr-surface-2);
+}
+
+.panel-label {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  color: var(--clr-text-muted);
+  cursor: default;
+}
+
+.char-count {
+  font-family: var(--font-mono);
+  font-size: 0.688rem;
+  color: var(--clr-text-muted);
+  transition: color var(--dur-fast) var(--ease-smooth);
+}
+
+.char-count.has-content {
+  color: var(--clr-text-secondary);
+}
+
+/* ── Textarea ── */
+.text-area {
+  display: block;
+  width: 100%;
+  min-height: 200px;
+  padding: var(--space-lg);
+  background: transparent;
+  border: none;
+  color: var(--clr-text-primary);
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  line-height: 1.75;
+  resize: vertical;
+  transition: background var(--dur-fast) var(--ease-smooth);
+}
+
+.text-area:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.015);
+}
+
+.text-area::placeholder {
+  color: var(--clr-text-muted);
+  font-style: italic;
+}
+
+.text-area--output {
+  color: var(--clr-accent);
+  opacity: 0;
+  transition: opacity var(--dur-med) var(--ease-smooth);
+}
+
+.text-area--output.has-content {
+  opacity: 1;
+}
+
+/* --------------------------------------------------------------------------
+   9. Controls Section
+   -------------------------------------------------------------------------- */
+.controls-section {
+  padding: var(--space-xl) var(--space-lg);
+  background: var(--clr-surface-2);
+  border-top: 1px solid var(--clr-border);
+  border-bottom: 1px solid var(--clr-border);
+}
+
+.controls-heading {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  color: var(--clr-text-muted);
+  margin-bottom: var(--space-lg);
+}
+
+.controls-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: var(--space-sm);
+  margin-bottom: var(--space-xl);
+}
+
+/* ── Toggle Items ── */
+.toggle-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-md);
+  padding: var(--space-md);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition:
+    border-color var(--dur-fast) var(--ease-smooth),
+    background var(--dur-fast) var(--ease-smooth),
+    transform var(--dur-fast) var(--ease-spring);
+}
+
+.toggle-item:hover {
+  border-color: var(--clr-border-hover);
+  background: var(--clr-surface-3);
+  transform: translateY(-1px);
+}
+
+.toggle-item:active {
+  transform: translateY(0);
+}
+
+/* Hide native checkbox */
+.toggle-input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+/* Custom toggle track */
+.toggle-track {
+  flex-shrink: 0;
+  position: relative;
+  width: 36px;
+  height: 20px;
+  background: var(--clr-surface-3);
+  border: 1px solid var(--clr-border-hover);
+  border-radius: 999px;
+  margin-top: 2px;
+  transition: background var(--dur-med) var(--ease-smooth), border-color var(--dur-med) var(--ease-smooth);
+}
+
+.toggle-thumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--clr-text-muted);
+  transition:
+    transform var(--dur-med) var(--ease-spring),
+    background var(--dur-med) var(--ease-smooth);
+}
+
+/* Checked state */
+.toggle-input:checked + .toggle-track {
+  background: var(--clr-accent-dim);
+  border-color: rgba(168, 255, 71, 0.4);
+}
+
+.toggle-input:checked + .toggle-track .toggle-thumb {
+  transform: translateX(16px);
+  background: var(--clr-accent);
+}
+
+.toggle-item:has(.toggle-input:checked) {
+  border-color: rgba(168, 255, 71, 0.2);
+  background: rgba(168, 255, 71, 0.04);
+}
+
+/* Toggle label text */
+.toggle-label {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.toggle-name {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--clr-text-primary);
+  line-height: 1.3;
+}
+
+.toggle-desc {
+  font-family: var(--font-mono);
+  font-size: 0.688rem;
+  color: var(--clr-text-muted);
+  line-height: 1.4;
+}
+
+/* --------------------------------------------------------------------------
+   10. Clean Button
+   -------------------------------------------------------------------------- */
+.clean-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  width: 100%;
+  padding: var(--space-md) var(--space-xl);
+  background: var(--clr-accent);
+  color: #0e0f11;
+  border: none;
+  border-radius: var(--radius-md);
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  overflow: hidden;
+  transition:
+    transform var(--dur-fast) var(--ease-spring),
+    box-shadow var(--dur-fast) var(--ease-smooth),
+    opacity var(--dur-fast) var(--ease-smooth);
+}
+
+.clean-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-btn);
+}
+
+.clean-btn:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* Glow sweep animation */
+.btn-glow {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 35%,
+    rgba(255, 255, 255, 0.25) 50%,
+    transparent 65%
+  );
+  transform: translateX(-100%);
+  transition: none;
+}
+
+.clean-btn:hover .btn-glow {
+  animation: shimmer 0.6s var(--ease-smooth) forwards;
+}
+
+/* Processing state */
+.clean-btn.is-processing {
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.btn-spinner {
+  display: none;
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(14, 15, 17, 0.3);
+  border-top-color: #0e0f11;
+  border-radius: 50%;
+}
+
+.clean-btn.is-processing .btn-text { opacity: 0.5; }
+.clean-btn.is-processing .btn-spinner {
+  display: block;
+  animation: spin 0.7s linear infinite;
+}
+
+/* --------------------------------------------------------------------------
+   11. Output Actions & Copy Button
+   -------------------------------------------------------------------------- */
+.output-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.copy-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: 5px 12px;
+  background: transparent;
+  border: 1px solid var(--clr-border-hover);
+  border-radius: var(--radius-sm);
+  color: var(--clr-text-secondary);
+  font-family: var(--font-mono);
+  font-size: 0.688rem;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  transition:
+    border-color var(--dur-fast) var(--ease-smooth),
+    color var(--dur-fast) var(--ease-smooth),
+    background var(--dur-fast) var(--ease-smooth),
+    transform var(--dur-fast) var(--ease-spring);
+}
+
+.copy-btn:hover:not(:disabled) {
+  border-color: var(--clr-accent);
+  color: var(--clr-accent);
+  background: var(--clr-accent-dim);
+  transform: translateY(-1px);
+}
+
+.copy-btn:active:not(:disabled) {
+  transform: scale(0.97);
+}
+
+.copy-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.copy-btn.copied {
+  border-color: var(--clr-accent);
+  color: var(--clr-accent);
+  background: var(--clr-accent-dim);
+}
+
+.copy-icon {
+  font-size: 0.9em;
+}
+
+/* --------------------------------------------------------------------------
+   12. Info / SEO Section
+   -------------------------------------------------------------------------- */
+.info-section {
+  margin-top: var(--space-3xl);
+  animation: fadeUp var(--dur-slow) var(--ease-smooth) 200ms both;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: var(--space-lg);
+}
+
+.info-card {
+  padding: var(--space-xl) var(--space-lg);
+  background: var(--clr-surface);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-lg);
+  transition:
+    border-color var(--dur-fast) var(--ease-smooth),
+    transform var(--dur-fast) var(--ease-smooth);
+}
+
+.info-card:hover {
+  border-color: var(--clr-border-hover);
+  transform: translateY(-2px);
+}
+
+.info-card__title {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--clr-text-primary);
+  margin-bottom: var(--space-md);
+  line-height: 1.3;
+}
+
+.info-card__body {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--clr-text-secondary);
+  line-height: 1.8;
+}
+
+.info-card__body strong {
+  color: var(--clr-text-primary);
+  font-weight: 500;
+}
+
+.info-card__list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.info-card__list li {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--clr-text-secondary);
+  padding-left: var(--space-md);
+  position: relative;
+  line-height: 1.6;
+}
+
+.info-card__list li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--clr-accent);
+  font-size: 0.75rem;
+}
+
+/* --------------------------------------------------------------------------
+   13. Site Footer
+   -------------------------------------------------------------------------- */
+.site-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  padding: var(--space-lg) var(--space-xl);
+  border-top: 1px solid var(--clr-border);
+  font-family: var(--font-mono);
+  font-size: 0.688rem;
+  color: var(--clr-text-muted);
+  margin-top: var(--space-3xl);
+}
+
+.footer-link {
+  color: var(--clr-text-secondary);
+}
+
+.footer-tag {
+  letter-spacing: 0.06em;
+  font-style: italic;
+}
+
+/* --------------------------------------------------------------------------
+   14. Keyframe Animations
+   -------------------------------------------------------------------------- */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 6px var(--clr-accent-glow); opacity: 1; }
+  50%       { box-shadow: 0 0 16px var(--clr-accent-glow); opacity: 0.7; }
+}
+
+@keyframes shimmer {
+  to { transform: translateX(200%); }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* --------------------------------------------------------------------------
+   15. Responsive — Tablet
+   -------------------------------------------------------------------------- */
+@media (max-width: 720px) {
+  .main-wrapper {
+    padding: var(--space-xl) var(--space-md) var(--space-2xl);
+  }
+
+  .site-header {
+    padding: var(--space-md);
+  }
+
+  .site-footer {
+    padding: var(--space-md);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-xs);
+  }
+
+  .controls-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   16. Responsive — Mobile
+   -------------------------------------------------------------------------- */
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .controls-section {
+    padding: var(--space-lg) var(--space-md);
+  }
+
+  .panel-header {
+    padding: var(--space-sm) var(--space-md);
+  }
+
+  .text-area {
+    padding: var(--space-md);
+    min-height: 150px;
+    font-size: 0.8rem;
+  }
+
+  .output-actions {
+    gap: var(--space-sm);
+  }
+}

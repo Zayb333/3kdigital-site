@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For The Win - Lottery Number Generator | 3K Digital</title>
+  <meta name="description" content="Generate lottery numbers instantly with smart strategy modes — Hot, Cold, Balanced, or Random. Free tool by 3K Digital. Works for Powerball, Mega Millions, Pick 3, and Pick 4." />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="For The Win - Lottery Number Generator | 3K Digital" />
+  <meta property="og:description" content="Pick smart lottery numbers with strategy modes. Free, fast, and beautifully designed by 3K Digital." />
+  <meta property="og:type" content="website" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Top nav bar -->
+  <header class="site-header" role="banner">
+    <a href="../../index.html" class="back-link" aria-label="Back to 3K Digital homepage">
+      <span class="back-arrow">&#8592;</span> Back to 3K Digital
+    </a>
+    <div class="brand-mark">
+        <a href="../../index.html">
+            <img src="../../assets/logos/3k-digital-logo.png" alt="3k Digital"
+                 style="width:9rem;">
+        </a>
+    </div>
+  </header>
+
+  <!-- Main content -->
+  <main class="main-wrapper" role="main">
+
+    <!-- Hero / Title -->
+      <section class="hero" aria-labelledby="tool-title">
+          <div class="hero-tag">Free Tool</div>
+          <h1 id="tool-title">For The Win</h1>
+          <h1 id="tool-title">Lottery Number Generator</h1>
+          <p class="hero-sub">Generate smart picks using different number strategies</p>
+      </section>
+
+    <!-- Tool Card -->
+    <div class="tool-card" role="region" aria-label="Lottery number generator tool">
+
+      <!-- Step 1: Lottery Type -->
+      <div class="card-section">
+        <h2 class="section-label"><span class="step-num">01</span> Choose Your Game</h2>
+        <div class="select-wrapper">
+          <select id="lottery-type" aria-label="Select lottery game type">
+            <option value="powerball">Powerball — 5 numbers + 1 Powerball (1–69 / 1–26)</option>
+            <option value="megamillions">Mega Millions — 5 numbers + 1 Mega Ball (1–70 / 1–25)</option>
+            <option value="pick3">Pick 3 — 3 numbers (0–9 each)</option>
+            <option value="pick4">Pick 4 — 4 numbers (0–9 each)</option>
+          </select>
+          <span class="select-icon" aria-hidden="true">&#9660;</span>
+        </div>
+      </div>
+
+      <!-- Divider -->
+      <div class="card-divider" aria-hidden="true"></div>
+
+      <!-- Step 2: Strategy -->
+      <div class="card-section">
+        <h2 class="section-label"><span class="step-num">02</span> Select Strategy</h2>
+        <p class="section-hint">Strategies simulate different number selection behaviors — not a guarantee of winning.</p>
+        <div class="strategy-grid" role="group" aria-label="Number strategy options">
+          <button class="strategy-btn active" data-strategy="random" aria-pressed="true">
+            <span class="strategy-icon">&#9684;</span>
+            <span class="strategy-name">Random</span>
+            <span class="strategy-desc">Pure chance, no bias</span>
+          </button>
+          <button class="strategy-btn" data-strategy="hot" aria-pressed="false">
+            <span class="strategy-icon">&#9651;</span>
+            <span class="strategy-name">Hot Numbers</span>
+            <span class="strategy-desc">Simulates frequent picks</span>
+          </button>
+          <button class="strategy-btn" data-strategy="cold" aria-pressed="false">
+            <span class="strategy-icon">&#9650;</span>
+            <span class="strategy-name">Cold Numbers</span>
+            <span class="strategy-desc">Simulates rare picks</span>
+          </button>
+          <button class="strategy-btn" data-strategy="balanced" aria-pressed="false">
+            <span class="strategy-icon">&#9632;</span>
+            <span class="strategy-name">Balanced</span>
+            <span class="strategy-desc">Even/odd, high/low mix</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Divider -->
+      <div class="card-divider" aria-hidden="true"></div>
+
+      <!-- Step 3: Generate -->
+      <div class="card-section generate-section">
+        <h2 class="section-label"><span class="step-num">03</span> Generate Numbers</h2>
+        <button id="generate-btn" class="generate-btn" aria-live="polite" aria-label="Generate lottery numbers">
+          <span class="btn-text">Generate My Numbers</span>
+          <span class="btn-loader" aria-hidden="true"></span>
+        </button>
+      </div>
+
+      <!-- Results -->
+      <div class="results-wrapper" id="results-wrapper" aria-live="polite" aria-atomic="true" hidden>
+        <div class="results-label" id="results-game-label"></div>
+        <div class="balls-container" id="balls-container" role="list" aria-label="Generated lottery numbers"></div>
+        <button class="copy-btn" id="copy-btn" aria-label="Copy numbers to clipboard">
+          <span>&#9112;</span> Copy Numbers
+        </button>
+        <p class="results-disclaimer">&#9432; Numbers generated for entertainment. Not a predictor of future results.</p>
+      </div>
+
+    </div>
+    <!-- /tool-card -->
+
+    <!-- SEO Content Block -->
+    <section class="info-section" aria-labelledby="info-heading">
+      <h2 id="info-heading">About This Tool</h2>
+      <div class="info-grid">
+        <div class="info-card">
+          <h3>What It Does</h3>
+          <p>The 3K Digital Lottery Number Generator creates instant number picks for popular US lottery games — Powerball, Mega Millions, Pick 3, and Pick 4 — using your chosen strategy. No signup, no cost, no delay.</p>
+        </div>
+        <div class="info-card">
+          <h3>Strategy Modes Explained</h3>
+          <p><strong>Hot Numbers</strong> biases selection toward lower values (simulating historically frequent draws). <strong>Cold Numbers</strong> shifts toward higher, less-common numbers. <strong>Balanced</strong> enforces an even distribution of odd/even and high/low picks. <strong>Random</strong> applies pure chance with no weighting.</p>
+        </div>
+        <div class="info-card">
+          <h3>Important Disclaimer</h3>
+          <p>All strategies are simulated behaviors for exploration purposes only. Lottery draws are statistically independent events — no tool, system, or strategy can guarantee or predict winning numbers. Play responsibly.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer" role="contentinfo">
+      <p>Built by <strong>3K Digital</strong> &mdash; Free Tools for Everyone</p>
+      <a href="../../index.html">
+          <img src="../../assets/logos/3k-digital-logo.png" alt="3k Digital"
+               style="width:9rem;">
+      </a>
+      <p class="footer-legal">&copy; <span id="footer-year"></span> 3K Digital. For entertainment use only.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
